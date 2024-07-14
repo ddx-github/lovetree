@@ -8,7 +8,7 @@
 </head>
 <body>
   <input type="password" id="pwd" placeholder="密码"><br></br>
-  <button id="login">登录</button><br></br>
+  <button onclick="login()">登录</button><br></br>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
   pwd = localStorage.getItem("lvpwd")
@@ -23,18 +23,17 @@
       return false;
     }
   }
-  $('#login').click(function() {
+  function login() {
     pwd = $('#pwd').val()
     flag = isRight(pwd)
     if (flag) {
       localStorage.setItem("lvpwd", pwd)
-		  alert("登录成功！")
+      alert("登录成功！")
       window.location.replace("/LoveTree")
-      }
     } else {
       alert("密码错误，请重试")
     }
-  });
+  }
 	</script>
 </body>
 </html>
