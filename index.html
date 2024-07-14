@@ -3,8 +3,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>爱情树</title>
-
     <link type="text/css" rel="stylesheet" href="./index_files/default.css">
+    <style>
+      .fixed-footer {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 50px;
+        background-color: #eee;
+        z-index: 9999;
+      }
+    </style>
     <script type="text/javascript" src="./index_files/jquery.min.js"></script>
     <script type="text/javascript" src="./index_files/jscex.min.js"></script>
     <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
@@ -54,7 +64,6 @@
         100%{ -webkit-transform: rotate(360deg);}
     }
 </style>
-
 <div id="main">
     <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a
             href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a
@@ -72,10 +81,18 @@
         </div>
         <canvas id="canvas" width="1100" height="680"></canvas>
     </div>
-
 </div>
-
+<div class="fixed-footer">
+  <p>Copyright 2024-2026</p><button onclick="logout()">退出登录</button>
+</div>
 <script type="text/javascript">
+  function logout() {
+    if (confirm("你确定要退出吗？")) {
+      localStorage.removeItem("lvpwd");
+      alert("退出成功！");
+      window.location.replace("/LoveTree/login.html");
+    }
+  }
     $('#code').html(config.lines.map(item => {
         return `<span class="say">${item}</span><br>
 						<span class="say"> </span><br>`
